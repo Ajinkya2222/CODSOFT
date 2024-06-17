@@ -1,0 +1,113 @@
+contacts = []
+def add_contact():
+    name = input("Enter name: ")
+    k=1
+    while(k!=0):
+     phone = input("Enter phone number: ")
+     if phone.isdigit() and len(phone) == 10:
+        if len(contacts)==0:
+            break
+        else :
+            for contact in contacts:
+             if phone in contact['phone']:
+                print("contact already exists for this no.")
+             else:
+               k=0
+               break
+     else:
+            print("Invalid phone number. Please enter exactly 10 digits.")
+            continue
+    email = input("Enter email: ")
+    address = input("Enter address: ")
+    contacts.append({'name': name, 'phone': phone, 'email': email, 'address': address})
+    print(f"Contact '{name}' added.")
+
+def view_contacts():
+    if not contacts:
+        print("No contacts found.")
+    else:
+        print("Contact List:")
+        for contact in contacts:
+            print(f"Name: {contact['name']}, Phone: {contact['phone']}")
+
+def search_contact():
+    search_term = input("Enter name or phone number to search: ")
+    for contact in contacts:
+        if search_term.lower()==contact['name'].lower() or search_term==contact['phone']:
+            print(f"Name: {contact['name']}, Phone: {contact['phone']}, Email: {contact['email']}, Address: {contact['address']}")
+    return
+    print("Contact not found.")
+
+def update_contact():
+    search_term = input("Enter phone number to update: ")
+    for contact in contacts:
+        if search_term==contact['phone']:
+            print(f"Updating contact: {contact['name']}")
+            contact['name'] = input("Enter new name (leave blank to keep current): ") or contact['name']
+            phone = input("Enter phone number: ")
+            if(len(phone)!=0):
+                 k=1
+                 while(k!=0):
+                  if phone.isdigit() and len(phone) == 10:
+                     if len(contacts)==0:
+                         contact['phone']=phone
+                         break
+                     else :
+                        for contact in contacts:
+                         if phone==contact['phone']:
+                            print("contact already exists for this no.")
+                         else:
+                            k=0
+                            contact['phone']=phone
+                            break
+                  else:
+                   print("Invalid phone number. Please enter exactly 10 digits.")
+                   phone = input("Enter phone number: ")
+                   continue
+            else:
+                k=0
+            contact['email'] = input("Enter new email (leave blank to keep current): ") or contact['email']
+            contact['address'] = input("Enter new address (leave blank to keep current): ") or contact['address']
+            print(f"Contact '{contact['name']}' updated.")
+            return
+    print("Contact not found.")
+
+def delete_contact():
+    search_term = input("phone number to delete: ")
+    for contact in contacts:
+        if search_term==contact['phone']:
+            contacts.remove(contact)
+            print(f"Contact '{contact['name']}' deleted.")
+            return
+    print("Contact not found.")
+
+def main():
+    while True:
+        print("\nContact Manager")
+        print("1. Add Contact")
+        print("2. View Contacts")
+        print("3. Search Contact")
+        print("4. Update Contact")
+        print("5. Delete Contact")
+        print("6. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            add_contact()
+        elif choice == '2':
+            view_contacts()
+        elif choice == '3':
+            search_contact()
+        elif choice == '4':
+            update_contact()
+        elif choice == '5':
+            delete_contact()
+        elif choice == '6':
+            print("Exiting the application.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
