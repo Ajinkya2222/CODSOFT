@@ -1,0 +1,13 @@
+a=float(input("enter 1st number :"))
+b=float(input("enter 2nd number :"))
+c=input("enter the operator :")
+if(c=='+'):
+    print("result is :",a+b)
+elif(c=='-'):
+    print("result is :",a-b)
+elif(c=='*'):
+    print("result is :",a*b)
+elif(c=='/'):
+    print("result is :",a/b)
+elif(c=='%'or c=='//'):
+    print("result is :",a//b)
