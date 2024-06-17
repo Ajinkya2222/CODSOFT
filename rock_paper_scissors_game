@@ -1,0 +1,49 @@
+import random
+import string
+print("rock paper scissors")
+print("for exiting the game please give your choice as 2.")
+length=0
+c=0
+p=0
+while(length!='2'):
+ length = input("Enter the user choice: ")
+ length.lower()
+ if(length=='2'):
+     print("exited successfully")
+     print("player = ",p)
+     print("computer =",c)
+     if(p<c):
+         print("computer won this exchange")
+     elif(p>c):
+        print("player won this exchange")
+     else:
+        print("game tied")
+     break
+ if((length!='scissors' and length!='paper')and length!='rock'):
+     print("invalid choice ")
+     continue
+ def generate_password():
+    characters = ['rock','scissors','paper']
+    password = ''.join(random.choice(characters))
+    return password
+ password = generate_password()
+ print("computer choice:", password)
+ if(password=='scissors' and length=='rock'):
+    p=p+1
+    print("Player wins !!!!+1 \n computer = ",c)
+    print("player = ",p)
+ elif(password=='rock'and length=='paper'):
+    p=p+1
+    print("Player wins !!!!+1 \n computer = ",c)
+    print("player = ",p)
+ elif(password=='paper' and length=='scissors'):
+    p=p+1
+    print("Player wins !!!!+1 \n computer = ",c)
+    print("player = ",p)
+ elif(password==length):
+    print("Game Tied \n player = ",p) 
+    print("\n computer = ",c)
+ else:
+    c=c+1
+    print("Computer Wins!!!!+1,computer=",c)
+    print("player=",p)
