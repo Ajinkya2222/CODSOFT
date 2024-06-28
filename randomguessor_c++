@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+    srand(time(nullptr));
+
+    int lowerLimit, upperLimit;
+    cout << "Enter the upper limit for the guesser: ";
+    cin >> upperLimit;
+    cout << "Enter the lower limit: ";
+    cin >> lowerLimit;
+
+    if (upperLimit <= lowerLimit) {
+        cout << "Upper limit should be greater than lower limit. Please restart the program and try again." << endl;
+        return 1;
+    }
+
+    int range = upperLimit - lowerLimit + 1;
+    int randomNumber = rand() % range + lowerLimit;
+
+    int userGuess = 0;
+
+    cout << "I have generated a random number between " << lowerLimit << " and " << upperLimit << "." << endl;
+    cout << "Can you guess what it is?" << endl;
+
+    while (userGuess != randomNumber) {
+        cout << "Enter your guess: ";
+        cin >> userGuess;
+
+        if (userGuess < randomNumber) {
+            cout << "Too low! Try again." << endl;
+        } else if (userGuess > randomNumber) {
+            cout << "Too high! Try again." << endl;
+        } else {
+            cout << "Congratulations! You guessed the correct number!" << endl;
+        }
+    }
+
+    return 0;
+}
