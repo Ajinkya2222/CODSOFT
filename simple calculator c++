@@ -1,0 +1,42 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+void exp(double a,double b){
+    double i,c=1;
+    for(i=0;i<b;i++){
+        c=c*a;
+    }
+    cout<<c;
+}
+
+int main() {
+    double a,b;
+    int c;
+    do{
+    cout<<"enter the first number for operation :"<<endl;
+    cin>>a;
+    cout<<"enter the second number for operation : "<<endl;
+    cin>>b;
+    cout<<"choose from the following operations : \n1.Addition\n2.Substraction\n3.Multiplication\n4.Division\n5.Exponent\n6.Exit"<<endl;
+    cin>>c;
+    switch(c){
+        case 1:
+        cout<<"addition completed successfully : "<<a+b;
+        break;
+        case 2:
+        cout<<"substraction completed successfully : "<<a-b;
+        break;
+        case 3:
+        cout<<"multiplication completed successfully : "<<a*b;
+        break;
+        case 4:
+        cout<<"division completed successfully : "<<a/b;
+        break;
+        case 5:
+        cout<<"exponential operation completed successfully : ";
+        exp(a,b);
+        break;
+    }
+    cout<<endl;
+}while(c<6&&c>0);
+}
